@@ -34,4 +34,4 @@ async def on_message(message): #メッセージを受け取る関数なので必
   
 
 # この＊＊＊に自分のトークンを書き替える
-client.run('NzE4MzQ2ODEyNDEwMjk4Mzk4.Xt5BXQ.aIYSQFuD2q3nHC96J8U3TRw8TDY')
+client.run(token)
