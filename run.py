@@ -19,7 +19,7 @@ async def on_message(message): #メッセージを受け取る関数なので必
               data = f.read() 
             textlist = data.split("\n")
             choice =random.choice(textlist) 
-            await client.send_message(message.channel,"あなたのブキは{}です。".format(choice)) #結果を出力
+            await message.channel.send("あなたのブキは{}です。".format(choice)) #結果を出力
        
        elif message.content == 'ブキ4':
              with open("buki.txt", "r",encoding="utf-8_sig") as f: 
@@ -29,7 +29,7 @@ async def on_message(message): #メッセージを受け取る関数なので必
              choice2 =random.choice(textlist)
              choice3 =random.choice(textlist)
              choice4 =random.choice(textlist)
-             await client.send_message(message.channel,"あなたたちのブキは\n{0}\n{1}\n{2}\n{3}\nです。".format(choice1,choice2,choice3,choice4)) #結果を出力
+             await message.channel.send("あなたたちのブキは\n{0}\n{1}\n{2}\n{3}\nです。".format(choice1,choice2,choice3,choice4)) #結果を出力
 
   
 
