@@ -31,7 +31,7 @@ async def on_message(message): #メッセージを受け取る関数なので必
              choice3 =random.choice(textlist)
              choice4 =random.choice(textlist)
              await message.channel.send("あなたたちのブキは\n{0}\n{1}\n{2}\n{3}\nです。".format(choice1,choice2,choice3,choice4)) #結果を出力
-　　　  elif message.content == 'ヒーロー1':
+       elif message.content == 'ヒーロー1':
             with open("hero.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
             textlist = data.split("\n")
