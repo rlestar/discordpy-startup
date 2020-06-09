@@ -34,4 +34,4 @@ async def on_message(message): #メッセージを受け取る関数なので必
   
 
 # この＊＊＊に自分のトークンを書き替える
-client.run('DISCORD_BOT_TOKEN')
+client.run(os.environ['DISCORD_BOT_TOKEN'])
