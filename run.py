@@ -2,6 +2,7 @@
 
 import discord #discordでBOTを使うのにこれが必ず
 import random
+import os
 
 
 client = discord.Client()
