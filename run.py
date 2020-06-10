@@ -2,7 +2,7 @@
 
 import discord #discordでBOTを使うのにこれが必ず
 import random
-
+import os
 
 client = discord.Client()
 @client.event #BOT起動時にCMDに表示される部分で無くてもよい
