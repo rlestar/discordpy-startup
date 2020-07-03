@@ -16,11 +16,17 @@ def callnick(message):
         return message.author.name
        else:
         return nick    
-    
+
+
 
 
 @client.event
 async def on_message(message): #メッセージを受け取る関数なので必ず必要
+       global choice
+       choice = False
+       with open("giji.txt", "r",encoding="utf-8_sig") as g:
+         gij = g.read()
+       giji=gij.split('\n')
        if message.content == 'ブキ1':
             with open("buki.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
@@ -28,7 +34,6 @@ async def on_message(message): #メッセージを受け取る関数なので必
             choice =random.choice(textlist) 
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             await message.channel.send(embed=embed)
-       
        elif message.content == 'ブキ4':
              with open("buki.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
@@ -110,7 +115,127 @@ async def on_message(message): #メッセージを受け取る関数なので必
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             await message.channel.send(embed=embed)
        elif message.content =='擬似':
-            await message.channel.send('https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
-
+            embed=discord.Embed(title="",description="")
+            embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
+            await message.channel.send(embed=embed)
+       elif message.content == "ブキ1d":
+            with open("buki.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+            if choice in giji:
+                ki = choice
+                choice =""
+                embed=discord.Embed(title= "",description=ki+"はメイン性能アップギアによって疑似確が可能です。\n必要なギアの数については下の表をご覧ください。",color=0x52ffae)
+                embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
+                dm = await message.author.create_dm()
+                await dm.send(embed=embed)
+       elif message.content == 'ヒーロー1d':
+            with open("hero.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'シューター1d':
+            with open("shooter.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'ブラスター1d':
+            with open("blaster.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'ローラー1d':
+            with open("roller.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'フデ1d':
+            with open("brush.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'チャージャー1d':
+            with open("charger.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'スロッシャー1d':
+            with open("shosher.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'スピナー1d':
+            with open("splatling.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'マニューバー1d':
+            with open("dualies.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif message.content == 'シェルター1d':
+            with open("brella.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            choice =random.choice(textlist) 
+            embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
+            dm = await message.author.create_dm()
+            await dm.send(embed=embed)
+       elif choice in giji:
+                ki = choice
+                choice =""
+                embed=discord.Embed(title= "",description=ki+"はメイン性能アップギアによって疑似確が可能です。\n必要なギアの数については下の表をご覧ください。",color=0x52ffae)
+                embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
+                await message.channel.send(embed=embed)
+       elif message.content == '/c':
+            if message.author.guild_permissions.administrator:
+                global sw
+                sw =False
+                await message.channel.send('このチャンネルの思い出を一括削除します。\nこうかいしませんね？\n消す場合はyesと打ってください。消さない場合はnoと打ってください。')
+                sw =True
+            else:
+                await message.channel.send('鯖主に頼んでください')
+       elif message.content == 'yes' and sw:
+            if message.author.guild_permissions.administrator:
+                await message.channel.purge()
+                await message.channel.send('削除しました。')
+                sw = False
+       elif message.content == 'no'and sw:
+            if message.author.guild_permissions.administrator:
+                await message.channel.send('削除しませんでした。')
+                sw = False
+                
 # この＊＊＊に自分のトークンを書き替える
 client.run(os.environ['DISCORD_BOT_TOKEN'])
