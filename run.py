@@ -19,7 +19,8 @@ def callnick(message):
 
 
 
-
+server = 632216411514601506
+lot_channel_id = 761856789888499712
 @client.event
 async def on_message(message): #メッセージを受け取る関数なので必ず必要
        global choice
