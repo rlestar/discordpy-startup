@@ -241,8 +241,8 @@ async def on_message(message): #メッセージを受け取る関数なので必
             if message.content.startswith('/p'):
                 attachment = message.attachments[0]
                 guild = client.get_guild(server)
-                await attachment.save("att.gif")
-                with open("att.gif", "rb") as img:
+                await attachment.save("/temp/att.gif")
+                with open("/temp/att.gif", "rb") as img:
                    img_emoji = img.read()
                 await message.channel.send("絵文字に設定します。")
                 await guild.create_custom_emoji(name="___",image=img_emoji)
