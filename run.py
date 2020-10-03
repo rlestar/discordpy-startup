@@ -220,7 +220,7 @@ async def on_message(message): #メッセージを受け取る関数なので必
                 embed=discord.Embed(title= "",description=ki+"はメイン性能アップギアによって疑似確が可能です。\n必要なギアの数については下の表をご覧ください。",color=0x52ffae)
                 embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
                 await message.channel.send(embed=embed)
-       elif message.content == '/c':
+       elif message.content == '///c':
             if message.author.guild_permissions.administrator:
                 global sw
                 sw =False
