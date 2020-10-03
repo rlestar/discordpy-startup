@@ -236,6 +236,15 @@ async def on_message(message): #メッセージを受け取る関数なので必
             if message.author.guild_permissions.administrator:
                 await message.channel.send('削除しませんでした。')
                 sw = False
-                
+       elif message.channel.id == lot_channel_id:
+            if message.content.startswith('/p'):
+                attachment = message.attachments[0]
+                guild = client.get_guild(server)
+                await attachment.save("att.gif")
+                with open("att.gif", "rb") as img:
+                   img_emoji = img.read()
+                await message.channel.send("絵文字に設定します。")
+                await guild.create_custom_emoji(name="___",image=img_emoji)
+                     
 # この＊＊＊に自分のトークンを書き替える
 client.run(os.environ['DISCORD_BOT_TOKEN'])
