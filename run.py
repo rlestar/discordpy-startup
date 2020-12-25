@@ -1,5 +1,6 @@
 import discord #discordでBOTを使うのにこれが必ず
 import random
+import asyncio
 import os
 
 client = discord.Client()
@@ -9,6 +10,10 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+    await client.change_presence(activity=discord.Game(name='コマンドは/hまたは📖で確認できます'))
+
+
+
     
 def callnick(message):
        nick = message.author.nick
@@ -19,23 +24,19 @@ def callnick(message):
 
 
 
-server = 632216411514601506
-lot_channel_id = 761856789888499712
+
 @client.event
-async def on_message(message): #メッセージを受け取る関数なので必ず必要
+async def on_message(message): 
        global choice
        choice = False
-       with open("giji.txt", "r",encoding="utf-8_sig") as g:
-         gij = g.read()
-       giji=gij.split('\n')
-       if message.content == 'ブキ1':
+       if message.content == 'ブキ1' or message.content == '1️⃣':
             with open("buki.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
             textlist = data.split("\n")
             choice =random.choice(textlist) 
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             await message.channel.send(embed=embed)
-       elif message.content == 'ブキ4':
+       elif message.content == 'ブキ4'or message.content == '4️⃣':
              with open("buki.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
              textlist = data.split("\n")
@@ -119,7 +120,7 @@ async def on_message(message): #メッセージを受け取る関数なので必
             embed=discord.Embed(title="",description="")
             embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
             await message.channel.send(embed=embed)
-       elif message.content == "ブキ1d":
+       elif message.content == "ブキ1d" or message.content == '1️⃣1️⃣':
             with open("buki.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
             textlist = data.split("\n")
@@ -127,13 +128,6 @@ async def on_message(message): #メッセージを受け取る関数なので必
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             dm = await message.author.create_dm()
             await dm.send(embed=embed)
-            if choice in giji:
-                ki = choice
-                choice =""
-                embed=discord.Embed(title= "",description=ki+"はメイン性能アップギアによって疑似確が可能です。\n必要なギアの数については下の表をご覧ください。",color=0x52ffae)
-                embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
-                dm = await message.author.create_dm()
-                await dm.send(embed=embed)
        elif message.content == 'ヒーロー1d':
             with open("hero.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
@@ -214,13 +208,8 @@ async def on_message(message): #メッセージを受け取る関数なので必
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             dm = await message.author.create_dm()
             await dm.send(embed=embed)
-       elif choice in giji:
-                ki = choice
-                choice =""
-                embed=discord.Embed(title= "",description=ki+"はメイン性能アップギアによって疑似確が可能です。\n必要なギアの数については下の表をご覧ください。",color=0x52ffae)
-                embed.set_image(url='https://cdn.discordapp.com/attachments/712589650694504508/719929619624624188/gijikaku.png')
-                await message.channel.send(embed=embed)
-       elif message.content == '///c':
+            """
+       elif message.content == '/c':
             if message.author.guild_permissions.administrator:
                 global sw
                 sw =False
@@ -230,14 +219,15 @@ async def on_message(message): #メッセージを受け取る関数なので必
                 await message.channel.send('鯖主に頼んでください')
        elif message.content == 'yes' and sw:
             if message.author.guild_permissions.administrator:
-                await message.channel.purge()
+                await message.channel.purge(limit=None)
                 await message.channel.send('削除しました。')
                 sw = False
        elif message.content == 'no'and sw:
             if message.author.guild_permissions.administrator:
                 await message.channel.send('削除しませんでした。')
                 sw = False
-       elif message.content == '/mw':
+                """
+       elif message.content == '/mw' or message.content == '🧢':
             with open("atama.txt", "r",encoding="utf-8_sig") as f: 
               data = f.read() 
             textlist = data.split("\n")
@@ -255,6 +245,16 @@ async def on_message(message): #メッセージを受け取る関数なので必
             embed.add_field(name="フク", value=choiceb, inline=False)
             embed.add_field(name="クツ", value=choicec, inline=False)
             await message.channel.send(embed=embed)
+       if message.content == '/h' or message.content == '📖':
+         embed=discord.Embed(title="このBOTで使えるコマンドは以下の通りです。(すべて半角で入力してください。)",color=0xfd832c)
+         commandin =["\n🌟「ブキ1」または1️⃣","\n🌟「ブキ4」または4️⃣","\n🌟「(シューター1、マニューバー1、チャージャー1、スロッシャー1、フデ1、ローラー1、ブラスター1、シェルター1、スピナー1)のどれか」","\n🌟「ヒーロー1」","\n🌟「ブキ1d」または1️⃣1️⃣","\n🌟「(シューター1d、マニューバー1d、チャージャー1d、スロッシャー1d、フデ1d、ローラー1d、ブラスター1d、シェルター1d、スピナー1d)のどれか」","\n🌟「ヒーロー1d」","\n🌟/mwまたは🧢"]
+         commandout =["全ブキの中から1つランダムに選びます。\n","全ブキの中から4つランダムに選びます。\nリーグマッチなどでお使いください。\n","それぞれのブキ種の中から1つランダムに選びます。\n","ヒーローブキの中から1つランダムに選びます。\n","全ブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","それぞれのブキ種の中から1つランダムに選びます。\n結果はDMに送られます。\n","ヒーローブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","アタマ、フク、クツのギアパワーを1つずつランダムに選びます。\n"]
+         for i in range(len(commandin)):
+           embed.add_field(name=commandin[i], value=commandout[i], inline=False)
+         embed.add_field(name="\n🌟不具合などがあれば以下のリンクからご連絡ください。",value="[Twitter](https://twitter.com/st6Rstar2000)\n[BOT作者のdiscordサーバー](https://discord.gg/qeVg3wgaXd)")
+         await message.channel.send(embed=embed)
+
+
                 
                      
 # この＊＊＊に自分のトークンを書き替える
