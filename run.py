@@ -208,6 +208,30 @@ async def on_message(message):
             embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice + "です。")
             dm = await message.author.create_dm()
             await dm.send(embed=embed)
+       elif message.content.startswith("ブキ"):
+            # 数字だけを抽出
+            command = message.content[2:]
+            with open("buki.txt", "r",encoding="utf-8_sig") as f: 
+              data = f.read() 
+            textlist = data.split("\n")
+            try:
+            	num=int(command)
+            	choice=random.choice(textlist)
+            	if num==1:
+            		embed=discord.Embed(title=f"{callnick(message)}さんのブキは",description=choice +"です。")
+            		await message.channel.send(embed=embed)
+            	elif num>20:
+            		embed=discord.Embed(title="数字が大きすぎます。1〜20の間でお願いします。")
+            		await message.channel.send(embed=embed)
+            	else:
+            		for i in range(num-1):
+            			ch=random.choice(textlist) 
+            			choice = str(choice) +"\n"+str(ch)
+            		embed=discord.Embed(title=f"{callnick(message)}さんたちのブキは",description=choice +"\n"+ "です。")
+            		await message.channel.send(embed=embed)
+            except ValueError as e:
+            	pass
+           
             """
        elif message.content == '/c':
             if message.author.guild_permissions.administrator:
@@ -246,9 +270,9 @@ async def on_message(message):
             embed.add_field(name="クツ", value=choicec, inline=False)
             await message.channel.send(embed=embed)
        if message.content == '/h' or message.content == '📖':
-         embed=discord.Embed(title="このBOTで使えるコマンドは以下の通りです。(すべて半角で入力してください。)",color=0xfd832c)
+         embed=discord.Embed(title="このBOTで使えるコマンドは以下の通りです。(ブキ〇〇のみ数字部分は半角全角どちらでも大丈夫ですが他のコマンドの数字は半角で入力してください。)",color=0xfd832c)
          commandin =["\n🌟「ブキ1」または1️⃣","\n🌟「ブキ4」または4️⃣","\n🌟「(シューター1、マニューバー1、チャージャー1、スロッシャー1、フデ1、ローラー1、ブラスター1、シェルター1、スピナー1)のどれか」","\n🌟「ヒーロー1」","\n🌟「ブキ1d」または1️⃣1️⃣","\n🌟「(シューター1d、マニューバー1d、チャージャー1d、スロッシャー1d、フデ1d、ローラー1d、ブラスター1d、シェルター1d、スピナー1d)のどれか」","\n🌟「ヒーロー1d」","\n🌟/mwまたは🧢"]
-         commandout =["全ブキの中から1つランダムに選びます。\n","全ブキの中から4つランダムに選びます。\nリーグマッチなどでお使いください。\n","それぞれのブキ種の中から1つランダムに選びます。\n","ヒーローブキの中から1つランダムに選びます。\n","全ブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","それぞれのブキ種の中から1つランダムに選びます。\n結果はDMに送られます。\n","ヒーローブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","アタマ、フク、クツのギアパワーを1つずつランダムに選びます。\n"]
+         commandout =["全ブキの中から1つランダムに選びます。\n","全ブキの中から4つランダムに選びます。\nリーグマッチなどでお使いください。\nまた、1と4以外の数字でも反応します。\n","それぞれのブキ種の中から1つランダムに選びます。\n","ヒーローブキの中から1つランダムに選びます。\n","全ブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","それぞれのブキ種の中から1つランダムに選びます。\n結果はDMに送られます。\n","ヒーローブキの中から1つランダムに選びます。\n結果はDMに送られます。\n","アタマ、フク、クツのギアパワーを1つずつランダムに選びます。\n"]
          for i in range(len(commandin)):
            embed.add_field(name=commandin[i], value=commandout[i], inline=False)
          embed.add_field(name="\n🌟不具合などがあれば以下のリンクからご連絡ください。",value="[Twitter](https://twitter.com/st6Rstar2000)\n[BOT作者のdiscordサーバー](https://discord.gg/qeVg3wgaXd)")
@@ -256,6 +280,7 @@ async def on_message(message):
 
 
                 
-                     
+                 
+         
 # この＊＊＊に自分のトークンを書き替える
 client.run(os.environ['DISCORD_BOT_TOKEN'])
